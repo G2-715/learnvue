@@ -9,11 +9,14 @@
 				{{ selectValue ? selectValue : "Select item..." }}
 			</button>
 			<transition name="slide">
-				<ul v-show="selectStatus" class="select__menu">
+				<ul
+					v-show="selectStatus"
+					@mouseover="activateTarget"
+					@mouseleave="deactivateTarget"
+					class="select__menu"
+				>
 					<li
 						v-for="item in selectItems"
-						@mouseover="activateTarget"
-						@mouseleave="deactivateTarget"
 						@click="selectItem(item.text)"
 						class="select__menu-item"
 					>
@@ -75,6 +78,9 @@
 </script>
 
 <style lang="less" scoped>
+	@border: #eee;
+	@background: #f9f9f9;
+
 	.select-page {
 		width: 100%;
 		min-height: 100%;
@@ -90,10 +96,10 @@
 		&__button {
 			width: 200px;
 			outline: none;
-			background-color: #f9f9f9;
+			background-color: @background;
 			padding: 5px 40px;
 			font-size: 16px;
-			border: 1px solid #eee;
+			border: 1px solid @border;
 			border-radius: 5px;
 			color: #666;
 			cursor: pointer;
@@ -103,7 +109,7 @@
 			box-sizing: border-box;
 
 			&:hover {
-				background-color: #eee;
+				background-color: @border;
 			}
 		}
 
@@ -112,7 +118,7 @@
 			left: 0;
 			right: 0;
 			top: 0;
-			background-color: #f9f9f9;
+			background-color: @background;
 			border-radius: 5px;
 			box-sizing: border-box;
 			overflow: hidden;
@@ -124,11 +130,11 @@
 				color: #666;
 
 				&:not(:last-child) {
-					border-bottom: 1px solid #eee;
+					border-bottom: 1px solid @border;
 				}
 
 				&:hover {
-					background-color: #eee;
+					background-color: @border;
 				}
 			}
 		}
