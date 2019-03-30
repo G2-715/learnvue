@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Main from "./pages/Main.vue";
-import Select from "./pages/Select.vue";
+import SelectGroup from "./pages/SelectGroup.vue";
+import Header from "./pages/Header.vue";
 
 Vue.use(Router);
 
@@ -18,7 +19,12 @@ export default new Router({
     {
       path: "/select",
       name: "select",
-      component: Select
+      component: SelectGroup
+    },
+    {
+      path: "/header",
+      name: "header",
+      component: Header
     }
   ]
 })
